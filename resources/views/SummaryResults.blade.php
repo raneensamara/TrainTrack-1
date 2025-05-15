@@ -38,5 +38,6 @@
 
   <!-- ✅ Attach JavaScript Logic -->
   <script src="{{ asset('js/summary.js') }}"></script>
+  <script src="{{ asset('js/summary-fallback.js') }}"></script> {{-- ✅ New file --}}
 </body>
 </html>
