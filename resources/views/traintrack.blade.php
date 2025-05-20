@@ -11,7 +11,12 @@
 <body class="wizard-body">
   <div class="wizard-layout">
     {{-- Left Sidebar --}}
-    @include('traintrack.partials.sidebar')
+  @include('traintrack.partials.sidebar', [
+  'currentStep' => 1,
+  'currentSubstep' => null
+])
+
+
 
     {{-- Right Form Area --}}
     <div class="form-area">
