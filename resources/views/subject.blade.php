@@ -12,7 +12,7 @@
 <body class="wizard-body">
   <div class="wizard-layout">
     {{-- ✅ Left Sidebar --}}
-    @include('traintrack.partials.sidebar', [
+        @include('traintrack.partials.sidebar', [
   'currentStep' => 2,
   'currentSubstep' => '2.1'
 ])

@@ -1,0 +1,36 @@
+.no-match-card {
+  background-color: #f9f6fd;
+  max-width: 600px;
+  margin: 4rem auto;
+  padding: 4rem 2rem;
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+}
+
+.no-match-card h2 {
+  font-size: 26px;
+  color: #d00000;
+}
+
+.no-match-card span {
+  color: #7209b7;
+}
+
+.no-match-card p {
+  font-size: 15px;
+  color: #333;
+  margin-top: 1rem;
+}
+
+.btn-restart {
+  background: #7209b7;
+  color: white;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  margin-top: 2rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}

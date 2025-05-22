@@ -19,7 +19,7 @@
   <div class="wizard-layout">
 
     {{-- ✅ Left Sidebar --}}
-   @include('traintrack.partials.sidebar', [
+       @include('traintrack.partials.sidebar', [
   'currentStep' => 5,
   'currentSubstep' => null
 ])
@@ -107,7 +107,7 @@
     </div>
   </div>
 
-  <!-- Alpine Component -->
+  <!-- ✅ AlpineJS Component Logic -->
   <script>
     function advancedPreferences() {
       return {
@@ -155,9 +155,18 @@
                 this.companySizes = data.data.company_sizes;
                 this.companyCultures = data.data.company_cultures;
                 this.industries = data.data.industries;
+
+                // ✅ Build cultureMap and save to localStorage
+                const map = {};
+                data.data.company_cultures.forEach(c => {
+                  map[c.name] = c.id;
+                });
+                localStorage.setItem("cultureMap", JSON.stringify(map));
+              } else {
+                console.warn("⚠️ Preferences fetch failed:", data.message);
               }
             })
-            .catch(err => console.error("Failed to load preferences", err));
+            .catch(err => console.error("❌ Failed to load preferences", err));
         },
 
         toggleCulture(culture) {
@@ -189,6 +198,7 @@
           const match = this.trainingModes.find(m => m.description === desc);
           if (match) {
             localStorage.setItem("trainingModeId", match.id);
+            localStorage.setItem("trainingModeDesc", desc);
           }
         },
 
@@ -197,6 +207,7 @@
           const match = this.companySizes.find(s => s.description === desc);
           if (match) {
             localStorage.setItem("companySizeId", match.id);
+            localStorage.setItem("companySizeDesc", desc);
           }
         },
 
@@ -206,7 +217,9 @@
           this.selected_culture = [];
           this.selected_industry = [];
           localStorage.removeItem("trainingModeId");
+          localStorage.removeItem("trainingModeDesc");
           localStorage.removeItem("companySizeId");
+          localStorage.removeItem("companySizeDesc");
           localStorage.removeItem("companyCulture");
           localStorage.removeItem("industryIds");
         },
@@ -215,12 +228,12 @@
           window.history.back();
         },
 
-        submitToExpertSystem // this will be declared in the external JS file
+        submitToExpertSystem // defined in advancepreferences.js
       };
     }
   </script>
 
-  <!-- Submit logic script -->
+  <!-- ✅ JS logic for Submit -->
   <script src="{{ asset('js/advancepreferences.js') }}"></script>
 </body>
 </html>
